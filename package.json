@@ -1,0 +1,22 @@
+{
+  "name": "arse",
+  "version": "1.0.0",
+  "description": "assert stuff",
+  "main": "index.js",
+  "author": "Sam Gluck <sdgluck@gmail.com>",
+  "scripts": {
+    "test": "jest",
+    "prepublishOnly": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/sdgluck/arse"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^20.0.4"
+  },
+  "jest": {
+    "testRegex": "test.js"
+  }
+}
