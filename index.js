@@ -2,8 +2,13 @@ function n (name) {
   return name ? name + ' to be ' : ''
 }
 
-function th (type, name) {
-  return new Error('Expecting ' + n(name) + type)
+function th (type, name, name2) {
+  return new Error(
+    'Expecting '
+    + n(name)
+    + type
+    + (name && name2 ? ' ' + name2 : '')
+  )
 }
 
 var arse = module.exports = {
@@ -72,5 +77,15 @@ var arse = module.exports = {
       throw th('null', name)
     }
     return arse
+  },
+  elem: function (val, arr, name, name2) {
+    if (arr.indexOf(val) === -1) {
+      throw th('element of array', name, name2)
+    }
+  },
+  key: function (val, obj, name, name2) {
+    if (!(val in obj)) {
+      throw th('key of object', name, name2)
+    }
   }
 }
