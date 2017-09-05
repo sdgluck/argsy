@@ -82,10 +82,12 @@ var arse = module.exports = {
     if (arr.indexOf(val) === -1) {
       throw th('element of array', name, name2)
     }
+    return arse
   },
   key: function (val, obj, name, name2) {
     if (!(val in obj)) {
       throw th('key of object', name, name2)
     }
+    return arse
   }
 }
