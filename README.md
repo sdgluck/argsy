@@ -19,17 +19,17 @@ yarn add argsy
 
 ```js
 // ES2015
-import arsgy from 'argsy'
+import assert from 'argsy'
 ```
 
 ```js
 // CommonJS
-var argsy = require('argsy')
+var assert = require('argsy')
 ```
 
 ## API
 
-### `argsy.{method}(val[, subject][, name[, name2]])`
+### `assert.{method}(val[, subject][, name[, name2]])`
 
 Assert `val` is of type indicated by `method` (see below).
 
@@ -41,6 +41,8 @@ Assert `val` is of type indicated by `method` (see below).
 #### Methods
 
 ```
+ok
+notOk
 str
 obj
 nonEmptyStr
