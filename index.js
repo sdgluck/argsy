@@ -1,7 +1,5 @@
 'use strict'
 
-const assert = require('assert')
-
 function th (type, name, name2) {
   return new Error(
     'Expecting '
@@ -11,9 +9,7 @@ function th (type, name, name2) {
   )
 }
 
-module.exports = assert
-
-Object.assign(assert, {
+var assert = module.exports = {
   ok: function (val, name) {
     if (!val) {
       throw th('ok', name)
@@ -101,4 +97,4 @@ Object.assign(assert, {
     }
     return assert
   }
-}) 
+}

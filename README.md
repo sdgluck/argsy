@@ -2,8 +2,7 @@
 
 > argument-oriented assertion
 
-Extends the built in `assert` Node lib with assertions that 
-throw useful argument-oriented messages.
+Assertions that throw useful argument-oriented messages.
 
 ## Install
 
@@ -54,6 +53,25 @@ undef
 null
 elem (use subject arg)
 key (use subject arg)
+```
+
+## Example
+
+```js
+import assert from 'argsy'
+
+function person (name, occupation) {
+  assert
+    .nonEmptyStr(name, 'name')
+    .nonEmptyStr(name, 'occupation')
+  console.log(name + ' is a ' + occupation)
+}
+
+person(0, {})
+//=> Error: Expecting name to be a non-empty string
+
+person('Spongebob', 'crabby patty flipper')
+//=> Spongebob is a crabby patty flipper
 ```
 
 ## Contributing
