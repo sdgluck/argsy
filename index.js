@@ -2,14 +2,10 @@
 
 const assert = require('assert')
 
-function n (name) {
-  return name ? name + ' to be ' : ''
-}
-
 function th (type, name, name2) {
   return new Error(
     'Expecting '
-    + n(name)
+    + (name ? name + ' to be ' : '')
     + type
     + (name && name2 ? ' ' + name2 : '')
   )
