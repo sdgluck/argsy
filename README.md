@@ -63,7 +63,7 @@ import assert from 'argsy'
 function person (name, occupation) {
   assert
     .nonEmptyStr(name, 'name')
-    .nonEmptyStr(name, 'occupation')
+    .nonEmptyStr(occupation, 'occupation')
   console.log(name + ' is a ' + occupation)
 }
 
