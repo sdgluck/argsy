@@ -14,7 +14,7 @@ describe('argsy', () => {
   it('asserts str, no name', () => expect(() => assert.str(0)).toThrowError(/expecting string/i))
 
   it('asserts obj good', () => expect(() => assert.obj({})).not.toThrow())
-  it('asserts obj bad', () => expect(() => assert.obj(0, 'value')).toThrowError(/expecting value to be object/i))
+  it('asserts obj bad', () => expect(() => assert.obj([], 'value')).toThrowError(/expecting value to be object/i))
   it('asserts obj, no name', () => expect(() => assert.obj(0)).toThrowError(/expecting object/i))
 
   it('asserts nonEmptyStr good', () => expect(() => assert.nonEmptyStr(' ')).not.toThrow())

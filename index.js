@@ -31,7 +31,10 @@ var arse = module.exports = {
     return arse
   },
   obj: function (val, name) {
-    if (typeof val !== 'object' || !!val.prototype) {
+    if (
+      typeof val !== 'object'
+      || Object.prototype.toString.call(val) === '[object Array]'
+    ) {
       throw th('object', name)
     }
     return arse
