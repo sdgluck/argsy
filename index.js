@@ -89,5 +89,11 @@ var arse = module.exports = {
       throw th('key of object', name, name2)
     }
     return arse
+  },
+  fn: function (val, name) {
+    if (typeof val !== 'function') {
+      throw th('function', name)
+    }
+    return arse
   }
 }
