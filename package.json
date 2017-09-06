@@ -1,6 +1,6 @@
 {
-  "name": "arse",
-  "version": "1.3.0",
+  "name": "argsy",
+  "version": "1.0.1",
   "description": "assert stuff",
   "main": "index.js",
   "author": "Sam Gluck <sdgluck@gmail.com>",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "github.com/sdgluck/arse"
+    "url": "github.com/sdgluck/argsy"
   },
   "license": "MIT",
   "devDependencies": {

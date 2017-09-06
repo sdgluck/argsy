@@ -1,32 +1,35 @@
-# arse
+# argsy
 
-> assert stuff
+> argument-oriented assertion
+
+Extends the built in `assert` Node lib with assertions that 
+throw useful argument-oriented messages.
 
 ## Install
 
 ```sh
-npm install --save arse
+npm install --save argsy
 ```
 
 ```sh
-yarn add arse
+yarn add argsy
 ```
 
 ## Import
 
 ```js
 // ES2015
-import arsgy from 'arse'
+import arsgy from 'argsy'
 ```
 
 ```js
 // CommonJS
-var arse = require('arse')
+var argsy = require('argsy')
 ```
 
 ## API
 
-### `arse.{method}(val[, subject][, name[, name2]])`
+### `argsy.{method}(val[, subject][, name[, name2]])`
 
 Assert `val` is of type indicated by `method` (see below).
 
