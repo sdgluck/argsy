@@ -63,11 +63,14 @@ import assert from 'argsy'
 function person (name, occupation) {
   assert
     .nonEmptyStr(name, 'name')
-    .nonEmptyStr(name, 'occupation')
+    .nonEmptyStr(occupation, 'occupation')
   console.log(name + ' is a ' + occupation)
 }
 
-person(0, {})
+person('Spongebob', {})
+//=> Error: Expecting occupation to be a non-empty string
+
+person(0, 'crabby patty flipper')
 //=> Error: Expecting name to be a non-empty string
 
 person('Spongebob', 'crabby patty flipper')

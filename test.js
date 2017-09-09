@@ -56,4 +56,8 @@ describe('argsy', () => {
   it('asserts fn good', () => expect(() => assert.fn(() => {}, 'value')).not.toThrow())
   it('asserts fn bad', () => expect(() => assert.fn(false, 'value')).toThrowError(/expecting value to be function/i))
   it('asserts fn, no name', () => expect(() => assert.fn(false)).toThrowError(/expecting function/i))
+
+  it('asserts arr good', () => expect(() => assert.fn(() => [], 'value')).not.toThrow())
+  it('asserts arr bad', () => expect(() => assert.fn({}, 'value')).toThrowError(/expecting value to be function/i))
+  it('asserts arr, no name', () => expect(() => assert.fn({})).toThrowError(/expecting function/i))
 })
