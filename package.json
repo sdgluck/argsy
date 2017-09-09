@@ -1,6 +1,6 @@
 {
   "name": "argsy",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "assert stuff",
   "main": "index.js",
   "author": "Sam Gluck <sdgluck@gmail.com>",
