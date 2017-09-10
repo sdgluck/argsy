@@ -1,8 +1,17 @@
 # argsy
 
-> argument-oriented assertion
+> awesome argument assertion
 
-Assertions that throw useful argument-oriented messages.
+Made with ❤ at [@outlandish](http://www.twitter.com/outlandish)
+
+<a href="http://badge.fury.io/js/argsy"><img alt="npm version" src="https://badge.fury.io/js/argsy.svg"></a>
+
+Dev-focused, flexible, and comprehensive argument assertions.
+
+- asserts all given arguments
+- collects assertion failures and groups them in a single error
+- reports function name, location, and [clean stack trace](https://github.com/sdgluck/error-clean-stack)
+- support for optional arguments
 
 ## Install
 
@@ -37,6 +46,29 @@ Assert `val` is of type indicated by `method` (see below).
 - __name__ {String} name to report in error message
 - __nam2__ {String} _(optional)_ name of subject
 
+No return value.
+
+## `AssertionInstance`
+
+### `assert([name]) : AssertionInstance`
+
+Create a new assertion instance.
+
+- __name__ {String} _(optional)_ name of the assertion instance 
+
+Returns an `AssertionInstance`.
+
+### `AssertionInstance.{method}(val[, subject][, name[, name2]])`
+
+Assert `val` is of type indicated by `method` (see below).
+
+- __val__ {*} value to assert
+- __subject__ {*} _(optional)_ subject of assert
+- __name__ {String} name to report in error message
+- __nam2__ {String} _(optional)_ name of subject
+
+Returns the `AssertionInstance`.
+
 #### Methods
 
 ```
@@ -51,11 +83,74 @@ int
 bool
 undef
 null
+nan
 elem (use subject arg)
 key (use subject arg)
 ```
 
-## Example
+### `AssertionInstance.optional.{method}()`
+
+Assert an optional value. 
+
+Shares the same API as `AssertionInstance.method` (see above).
+
+Returns the `AssertionInstance`.
+
+### `AssertionInstance.$eval()`
+
+Assert the arguments.
+
+This should be called last in the chain of assertion declarations.
+
+## Examples
+
+### `examples/report.js`
+
+Evaluates all assertions, groups them, and reports all failures.
+
+Note call to `$eval` at the end.
+
+```js
+function add (a, b) {
+  assert('add')
+    .num(a, 'a')
+    .num(b, 'b')
+    .$eval()
+    
+  return a + b
+}
+
+const a = Number(process.argv[1])
+const b = Number(process.argv[2])
+const result = add(a, b)
+
+console.log(a, '+', b, '=', result)
+```
+
+#### Good
+
+```sh
+$ node examples/add.js 1 2
+1+2=3
+```
+
+#### Bad
+
+```sh
+$ node add.js 1 "two"
+Failed argument assertions in call to "fn" at C:\dev\argsy\src\index.js:50:
+  - expecting a to be number
+      at Function.evaluate (src/index.js:66:13)
+      at fn (test.js:73:11)
+      at run (test.js:75:9)
+      at Object.<anonymous> (test.js:77:19)
+      at Promise.resolve.then.el (../../xampp/htdocs/argsy/node_modules/p-map/index.js:42:16)
+      at process._tickCallback (internal/process/next_tick.js:103:7)
+```
+
+### `examples/spongebob.js`
+
+Stops and throws at first failed assertion.
 
 ```js
 import assert from 'argsy'
@@ -63,14 +158,15 @@ import assert from 'argsy'
 function person (name, occupation) {
   assert
     .nonEmptyStr(name, 'name')
-    .nonEmptyStr(occupation, 'occupation')
-  console.log(name + ' is a ' + occupation)
+    .optional.nonEmptyStr(occupation, 'occupation')
+
+  console.log(name + ' is a ' + (occupation || 'sponge'))
 }
 
-person('Spongebob', {})
-//=> Error: Expecting occupation to be a non-empty string
+person('Spongebob')
+//=> Spongebob is a sponge
 
-person(0, 'crabby patty flipper')
+person(['Spongebob'], 'crabby patty flipper')
 //=> Error: Expecting name to be a non-empty string
 
 person('Spongebob', 'crabby patty flipper')
@@ -86,4 +182,3 @@ If you're not sure how, check out the [great video tutorials on egghead.io](http
 ## License
 
 MIT © [Sam Gluck](https://github.com/sdgluck)
-

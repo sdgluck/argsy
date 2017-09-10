@@ -1,11 +1,13 @@
 {
   "name": "argsy",
   "version": "1.0.4",
-  "description": "assert stuff",
-  "main": "index.js",
+  "description": "awesome argument assertion",
+  "main": "bin/index.js",
+  "jsnext:main": "src/index.js",
   "author": "Sam Gluck <sdgluck@gmail.com>",
   "scripts": {
-    "test": "jest",
+    "build": "babel src --out-dir bin",
+    "test": "npm run build && jest",
     "prepublishOnly": "npm test"
   },
   "repository": {
@@ -18,5 +20,12 @@
   },
   "jest": {
     "testRegex": "test.js"
+  },
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "error-clean-stack": "^1.0.2",
+    "stack-trace": "0.0.10"
   }
 }
