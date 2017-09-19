@@ -1,6 +1,6 @@
 {
   "name": "argsy",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "awesome argument assertion",
   "main": "bin/index.js",
   "jsnext:main": "src/index.js",
