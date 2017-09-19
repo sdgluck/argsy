@@ -12,6 +12,8 @@ Dev-focused, flexible, and comprehensive argument assertions.
 - collects assertion failures and groups them in a single error
 - reports function name, location, and [clean stack trace](https://github.com/sdgluck/error-clean-stack)
 - support for optional arguments
+
+<img src="https://github.com/sdgluck/argsy/blob/master/example.gif" />
  
 ## Install
 
