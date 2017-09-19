@@ -1,3 +1,10 @@
+function typeOf (val) {
+  if (Array.isArray(val)) {
+    return 'array'
+  }
+  return typeof val
+}
+
 function message (type, name, name2) {
   return 'Expecting '
     + (name ? name + ' to be ' : '')
@@ -26,16 +33,13 @@ module.exports = function (ret) {
       return ret
     },
     obj (val, name) {
-      if (
-        typeof val !== 'object'
-        || Object.prototype.toString.call(val) === '[object Array]'
-      ) {
+      if (typeof val !== 'object' || Array.isArray(val)) {
         throw new Error(message('object', name))
       }
       return ret
     },
     arr (val, name) {
-      if (Object.prototype.toString.call(val) === '[object Array]') {
+      if (!Array.isArray(val)) {
         throw new Error(message('array', name))
       }
       return ret

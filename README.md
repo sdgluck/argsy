@@ -137,15 +137,13 @@ $ node examples/add.js 1 2
 #### Bad
 
 ```sh
-$ node add.js 1 "two"
-Failed argument assertions in call to "fn" at C:\dev\argsy\src\index.js:50:
+$ node add.js
+Error: Failed argument assertions in call to "add" at C:/argsy/examples/report.js:10:
   - expecting a to be number
-      at Function.evaluate (src/index.js:66:13)
-      at fn (test.js:73:11)
-      at run (test.js:75:9)
-      at Object.<anonymous> (test.js:77:19)
-      at Promise.resolve.then.el (../../xampp/htdocs/argsy/node_modules/p-map/index.js:42:16)
-      at process._tickCallback (internal/process/next_tick.js:103:7)
+  - expecting b to be number
+    at Function.evaluate (C:/argsy/src/index.js:63:13)
+    at add (C:/argsy/examples/report.js:10:6)
+    at Object.<anonymous> (C:/argsy/examples/report.js:18:16)
 ```
 
 ### `examples/spongebob.js`
