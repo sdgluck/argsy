@@ -18,13 +18,20 @@ function person (name, occupation) {
 }
 
 catchAndLog(() => {
+  console.log('1:')
   person('Spongebob')
 })
 
+console.log()
+
 catchAndLog(() => {
+  console.log('2:')
   person(['Spongebob'], 'crabby patty flipper')
 })
 
+console.log()
+
 catchAndLog(() => {
+  console.log('3:')
   person('Spongebob', 'crabby patty flipper')
 })
