@@ -4,7 +4,7 @@
 const assert = require('../src')
 
 function add (a, b) {
-  assert('add')
+  assert()
     .num(a, 'a')
     .num(b, 'b')
     .$eval()
