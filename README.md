@@ -6,9 +6,9 @@ Made with ❤ at [@outlandish](http://www.twitter.com/outlandish)
 
 <a href="http://badge.fury.io/js/argsy"><img alt="npm version" src="https://badge.fury.io/js/argsy.svg"></a>
 
-Dev-focused, flexible, and comprehensive argument assertions.
+Argument-oriented assertions...
 
-- asserts all given arguments
+- assertions that name offending arguments
 - collects assertion failures and groups them in a single error
 - reports function name, location, and [clean stack trace](https://github.com/sdgluck/error-clean-stack)
 - support for optional arguments
