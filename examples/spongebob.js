@@ -9,7 +9,7 @@ function catchAndLog (fn) {
 }
 
 function person (name, occupation) {
-  assert('util.person')
+  assert('spongebob')
     .nonEmptyStr(name, 'name')
     .optional.nonEmptyStr(occupation, 'occupation')
     .$eval()

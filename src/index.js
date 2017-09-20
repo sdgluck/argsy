@@ -17,11 +17,13 @@ const optionalPropDefinition = ['optional', {
 
 let nextIsOptional = false
 
-Object.keys(asserts).forEach((method) => {
+for (const method in asserts) {
   const orig = asserts[method]
-  asserts[method] = assertionWrapper(orig)
-  Object.defineProperty(asserts[method], ...optionalPropDefinition)
-})
+  Object.defineProperty(
+    asserts[method] = assertionWrapper(orig),
+    ...optionalPropDefinition
+  )
+}
 
 Object.assign(argsy, asserts)
 
@@ -67,7 +69,7 @@ function argsy (caller = '') {
   argsy.$ = argsy.$eval = evaluate
   argsy.$evalIndexed = evaluate.bind(null, true)
 
-  Object.keys(asserts).forEach((method) => {
+  for (const method in asserts) {
     argsy[method] = function () {
       try {
         asserts[method].apply(null, arguments)
@@ -76,8 +78,7 @@ function argsy (caller = '') {
       }
       return argsy
     }
-    return argsy
-  })
+  }
 
   return argsy
 }
