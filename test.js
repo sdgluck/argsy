@@ -5,6 +5,8 @@ describe('argsy', () => {
     it('asserts ok good', () => expect(() => assert.ok(true, 'value')).not.toThrow())
     it('asserts ok bad', () => expect(() => assert.ok(false, 'value')).toThrowError(/expecting value to be ok/i))
     it('asserts ok, no name', () => expect(() => assert.ok(false)).toThrowError(/expecting ok/i))
+    it('asserts ok, optional, without value', () => expect(() => assert.optional.ok()).not.toThrowError(/expecting ok/i))
+    it('asserts ok, optional, with value', () => expect(() => assert.optional.ok(false)).toThrowError(/expecting ok/i))
 
     it('asserts notOk good', () => expect(() => assert.notOk(false)).not.toThrow())
     it('asserts notOk bad', () => expect(() => assert.notOk(true, 'value')).toThrowError(/expecting value to be not ok/i))
@@ -69,18 +71,16 @@ describe('argsy', () => {
 
   describe('report', () => {
     it('generates correct report', () => {
-      const run = () => {
-        function fn (a, b) {
-          assert('fn')
-            .num(a, 'a')
-            .optional.num(b, 'b')
-            .$eval()
-        }
-        fn()
+      function fn (a, b) {
+        assert('fn')
+          .num(a, 'a')
+          .optional.num(b, 'b')
+          .$eval()
       }
-      expect(run).toThrowError(/in call to "fn"/)
-      expect(run).toThrowError(/\n\s{2}- expecting a to be number/)
-      expect(run).not.toThrowError(/\n\s{2}- expecting b to be number/)
+      expect(() => fn('')).toThrowError(/in call to "fn"/)
+      expect(() => fn('')).toThrowError(/\n\s{2}- expecting a to be number/)
+      expect(() => fn('')).not.toThrowError(/\n\s{2}- expecting b to be number/)
+      expect(() => fn('', '')).toThrowError(/\n\s{2}- expecting b to be number/)
     })
   })
 })
