@@ -15,6 +15,36 @@ Argument-oriented assertions...
 
 <img src="https://github.com/sdgluck/argsy/blob/master/example.gif" />
  
+## Example
+
+#### Before
+
+```js
+function hello (name, message) {
+  if (typeof name !== 'string' || !name.length) {
+    throw new Error('expecting name to be non-empty string')
+  } else if (message && typeof message !== 'string') {
+    throw new Error('expecting message to be string')
+  }
+  console.log('hello', name, message)
+}
+hello() //=> Error: expecting name to be non-empty string
+```
+
+#### After
+
+```js
+function hello (name, message) {
+  assert('hello')
+    .nonEmptyStr(name)
+    .optional.str(message)
+  console.log('hello', name, message)
+}
+hello()
+//=>  Error: Failed argument assertions in call to "hello" at C:/hello.js:1:
+//      - expecting name to be non-empty string
+```
+ 
 ## Install
 
 ```sh
@@ -104,7 +134,7 @@ Assert the arguments.
 
 This should be called last in the chain of assertion declarations.
 
-## Examples
+## More Examples
 
 ### `examples/report.js`
 

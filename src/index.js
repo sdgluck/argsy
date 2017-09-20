@@ -4,7 +4,6 @@ module.exports = argsy
 
 const stackTrace = require('stack-trace')
 const {Error} = require('error-clean-stack')
-
 const asserts = require('./create-asserts')(argsy)
 
 const optionalPropDefinition = ['optional', {
@@ -58,8 +57,9 @@ function argsy (caller = '') {
 
       errors.forEach((message, i) => {
         message = message[0].toLowerCase() + message.substr(1)
-        message = indexed ? `${i}: ${message}` : message
-        error += `\n  - ` + message
+        error += indexed
+          ? `\n  ${i}: ${message}`
+          : `\n  - ` + message
       })
 
       throw new Error(error)
@@ -72,7 +72,7 @@ function argsy (caller = '') {
   for (const method in asserts) {
     argsy[method] = function () {
       try {
-        asserts[method].apply(null, arguments)
+        asserts[method](...arguments)
       } catch (err) {
         errors.push(err.message)
       }
