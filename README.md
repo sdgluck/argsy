@@ -1,10 +1,18 @@
-# argsy
+<p align="center">
+  <img src="https://github.com/sdgluck/argsy/blob/master/assets/maple.png" />
+</p>
 
-> awesome argument assertion
+<p><h1 align="center">argsy</h1></p>
 
-Made with ❤ at [@outlandish](http://www.twitter.com/outlandish)
+<p align="center">Awesome argument assertion</p>
 
-<a href="http://badge.fury.io/js/argsy"><img alt="npm version" src="https://badge.fury.io/js/argsy.svg"></a>
+<p align="center">Made with ❤ at <a href="http://www.twitter.com/outlandish">@outlandish</a></p>
+  
+<p align="center">
+    <a href="http://badge.fury.io/js/argsy"><img alt="npm version" src="https://badge.fury.io/js/argsy.svg" /></a>
+</p>
+
+<hr/>
 
 Argument-oriented assertions...
 
