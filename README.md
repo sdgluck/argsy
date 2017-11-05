@@ -45,7 +45,7 @@ hello() //=> Error: expecting name to be non-empty string
 function hello (name, message) {
   assert('hello')
     .nonEmptyStr(name)
-    .optional.str(message)
+    .optional.str(message).$()
   console.log('hello', name, message)
 }
 hello()
@@ -155,7 +155,7 @@ function add (a, b) {
   assert('add')
     .num(a, 'a')
     .num(b, 'b')
-    .$eval()
+    .$eval() // or just .$()
     
   return a + b
 }
